@@ -9,10 +9,12 @@ import PlaceOrder from "./pages/PlaceOrder";
 import Collection from "./pages/Collection";
 import Product from "./pages/Product";
 import About from "./pages/About";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
