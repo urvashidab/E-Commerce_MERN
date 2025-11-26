@@ -10,24 +10,24 @@ const Navbar = () => {
       {/* middle part list */}
 
       <ul className="flex justify-center items-center gap-6 ">
-        <NavLink to="/">
+        <NavLink to="/" className="flex flex-col items-center gap-1">
           <p>HOME</p>
-          <hr></hr>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-600 hidden"></hr>
         </NavLink>
 
-        <NavLink to="/collection">
+        <NavLink to="/collection" className="flex flex-col items-center gap-1">
           <p>COLLECTION</p>
-          <hr></hr>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-600 hidden"></hr>
         </NavLink>
 
-        <NavLink to="/about">
+        <NavLink to="/about" className="flex flex-col items-center gap-1">
           <p>ABOUT</p>
-          <hr></hr>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-600 hidden"></hr>
         </NavLink>
 
-        <NavLink to="/contact">
+        <NavLink to="/contact" className="flex flex-col items-center gap-1">
           <p>CONTACT</p>
-          <hr></hr>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-600 hidden"></hr>
         </NavLink>
 
         <button className="rounded-full shadow py-2 px-4 ">Admin panel</button>
@@ -36,9 +36,21 @@ const Navbar = () => {
       {/* right hand side */}
 
       <div className="flex justify-center gap-6">
-        <img src={assets.search_icon} alt="search icon" className=""></img>
-        <img src={assets.profile_icon} alt="profile icon"></img>
-        <img src={assets.cart_icon} alt="cart icon"></img>
+        <img
+          src={assets.search_icon}
+          alt="search icon"
+          className="w-5 cursor-pointer"
+        ></img>
+        <img
+          src={assets.profile_icon}
+          alt="profile icon"
+          className="w-5 cursor-pointer"
+        ></img>
+        <img
+          src={assets.cart_icon}
+          alt="cart icon"
+          className="w-5 cursor-pointer"
+        ></img>
       </div>
     </nav>
   );
