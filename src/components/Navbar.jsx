@@ -21,7 +21,7 @@ const Navbar = () => {
 
       {/* middle part list */}
 
-      <ul className="lg:flex justify-center text-sm  gap-6 hidden items-center ">
+      <ul className="lg:flex justify-center text-sm  gap-6 hidden  ">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p>HOME</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-600 hidden"></hr>
@@ -42,9 +42,9 @@ const Navbar = () => {
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-600 hidden"></hr>
         </NavLink>
 
-        <button className="rounded-full shadow  py-2 px-3 cursor-pointer ">
+        {/* <button className="rounded-full shadow  py-2 px-3 cursor-pointer ">
           Admin panel
-        </button>
+        </button> */}
       </ul>
 
       {/* right hand side */}
@@ -130,9 +130,9 @@ const Navbar = () => {
           <Link to="/cart" onClick={handleMenu}>
             Cart
           </Link>
-          <button className="rounded-full shadow py-2 px-4 cursor-pointer">
+          {/* <button className="rounded-full shadow py-2 px-4 cursor-pointer">
             Admin Panel
-          </button>
+          </button> */}
         </ul>
       )}
     </nav>
