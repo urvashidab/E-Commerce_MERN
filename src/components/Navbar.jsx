@@ -65,21 +65,27 @@ const Navbar = () => {
           ></img>
           <div className="absolute hidden group-hover:block  right-0 pt-2  dropdown-menu">
             <div className="flex flex-col gap-2 w-36 py-3 px-5 shadow-gray-600 shadow-md rounded">
-              <div className="flex justify-start gap-2 items-center  text-gray-500 hover:text-gray-800  cursor-pointer">
+              <Link
+                to="/profile"
+                className="flex justify-start gap-2 items-center  text-gray-500 hover:text-gray-800  cursor-pointer"
+              >
                 <CgProfile />
                 <p>My Profile</p>
-              </div>
+              </Link>
 
-              <div className="flex justify-start gap-2 items-center   text-gray-500 hover:text-gray-800  cursor-pointer">
+              <Link
+                to="/order"
+                className="flex justify-start gap-2 items-center   text-gray-500 hover:text-gray-800  cursor-pointer"
+              >
                 <FiPackage />
                 <p>Orders</p>
-              </div>
+              </Link>
 
-              <div className="flex justify-start gap-2 items-center   text-gray-500 hover:text-gray-800 cursor-pointer">
+              <button className="flex justify-start gap-2 items-center   text-gray-500 hover:text-gray-800 cursor-pointer">
                 <FiLogOut />
 
                 <p>Logout</p>
-              </div>
+              </button>
             </div>
           </div>
         </div>
