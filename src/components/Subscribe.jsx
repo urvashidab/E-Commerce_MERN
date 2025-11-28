@@ -12,7 +12,7 @@ const Subscribe = () => {
         <input
           type="email"
           placeholder="Enter your email"
-          className="border px-5 py-3 text-sm w-150 border-gray-300 outline-none"
+          className="border px-5 py-3 text-sm md:w-96 lg:w-[500px] border-gray-300 outline-none"
         />
         <button className="uppercase cursor-pointer bg-black text-white px-5 py-3 text-sm">
           subscribe
