@@ -1,7 +1,12 @@
 import React from "react";
+import Line from "../components/Line";
 
 const Collection = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Line />
+    </div>
+  );
 };
 
 export default Collection;

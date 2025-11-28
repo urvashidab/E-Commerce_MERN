@@ -63,8 +63,8 @@ const Navbar = () => {
             alt="profile icon"
             className="w-5 cursor-pointer"
           ></img>
-          <div className="absolute hidden group-hover:block  right-0 pt-2  dropdown-menu">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 shadow-gray-600 shadow-md rounded">
+          <div className="absolute hidden group-hover:block  right-0 pt-2 border rounded  bg-gray-50 dropdown-menu">
+            <div className="flex flex-col gap-2 w-36 py-3 px-5  ">
               <Link
                 to="/profile"
                 className="flex justify-start gap-2 items-center  text-gray-500 hover:text-gray-800  cursor-pointer"
@@ -98,7 +98,7 @@ const Navbar = () => {
             alt="cart icon"
             className="w-5 cursor-pointer"
           ></img>
-          <span className="absolute -top-1 -right-2 bg-cyan-700 text-white text-xs px-1 rounded-full">
+          <span className="absolute -top-1 -right-2 bg-[#007E6E] text-white text-xs px-1 rounded-full">
             0
           </span>
         </Link>

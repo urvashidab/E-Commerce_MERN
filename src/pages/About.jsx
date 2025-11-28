@@ -1,7 +1,12 @@
 import React from "react";
+import Line from "../components/Line";
 
 const About = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Line />
+    </div>
+  );
 };
 
 export default About;
