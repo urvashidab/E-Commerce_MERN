@@ -8,3 +8,13 @@ a.active hr {
 .fontCursive {
   font-family: "Cinzel Decorative", serif;
 }
+
+@layer components {
+  .linedesign {
+    @apply w-10 h-0.5 bg-gray-600;
+  }
+
+  .btnDesign {
+    @apply rounded cursor-pointer bg-[#234C6A] py-3 px-5 text-white hover:bg-[#456882];
+  }
+}
