@@ -54,9 +54,9 @@ const About = () => {
         <span className="linedesign"></span>
       </div>
 
-      <div className=" gap-4 grid grid-cols-1 md:grid-cols-3 ">
+      <div className=" gap-6 grid grid-cols-1 md:grid-cols-3 ">
         {/* left side */}
-        <div className="flex flex-col gap-4 justify-start px-10 py-8 shadow-lg rounded-xl bg-gray-50">
+        <div className="flex flex-col gap-4 justify-start px-10 py-8 shadow-md rounded-xl bg-gray-50">
           <h2 className="font-bold">Quality Assurance:</h2>
           <p className="text-gray-500">
             We meticulously select and vet each product to ensure it meets our
@@ -65,18 +65,18 @@ const About = () => {
         </div>
 
         {/* middle part */}
-        <div className="flex flex-col gap-4 justify-start px-10 py-8 shadow-lg rounded-xl bg-gray-50">
+        <div className="flex flex-col gap-4 justify-start px-10 py-8 shadow-md rounded-xl bg-gray-50">
           <h2 className="font-bold">Convenience:</h2>
-          <p>
+          <p className="text-gray-500">
             With our user-friendly interface and hassle-free ordering process,
             shopping has never been easier.
           </p>
         </div>
 
         {/* left part */}
-        <div className="flex flex-col gap-4 justify-start px-10 py-8 shadow-lg rounded-xl bg-gray-50">
+        <div className="flex flex-col gap-4 justify-start px-10 py-8 shadow-md rounded-xl bg-gray-50">
           <h2 className="font-bold">Exceptional Customer Service:</h2>
-          <p>
+          <p className="text-gray-500">
             Our team of dedicated professionals is here to assist you the way,
             ensuring your satisfaction is our top priority.
           </p>
