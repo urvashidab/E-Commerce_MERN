@@ -3,10 +3,10 @@ This project demonstrates a clean component-based architecture, product browsing
 
 The goal of this project is to practice React fundamentals, state management, and reusable UI components while building a real-world application.
 
-Tech Stack:
+## **Tech Stack**
 
-Frontend: HTML5, React, Tailwind, JavaScript(ES6+), React Router
-Tools: Git, GitHub, VS Code
+**Frontend** HTML5, React, Tailwind, JavaScript(ES6+), React Router
+**Tools**: Git, GitHub, VS Code
 
 ## Live Demo
 
