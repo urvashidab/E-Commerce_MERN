@@ -3,11 +3,13 @@ import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import Subscribe from "../components/Subscribe";
 import Policy from "../components/Policy";
+import BestSeller from "../components/BestSeller";
 
 const Home = () => {
   return (
     <div>
       <Hero />
+      <BestSeller />
 
       <Policy />
       <Subscribe />

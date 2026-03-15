@@ -129,7 +129,7 @@ export const products = [
     subCategory: "Topwear",
     sizes: ["M", "L", "XL"],
     date: 1716621345448,
-    bestseller: true,
+    bestseller: false,
   },
   {
     _id: "aaaac",
