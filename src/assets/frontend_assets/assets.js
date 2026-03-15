@@ -53,8 +53,10 @@ import p_img49 from "./p_img49.png";
 import p_img50 from "./p_img50.png";
 import p_img51 from "./p_img51.png";
 import p_img52 from "./p_img52.png";
+import logo_1 from "./logo_trendcart.png";
 
 import logo from "./logo.png";
+
 import hero_img from "./hero_img.png";
 import homepage from "./HomePage1.jpg";
 import cart_icon from "./cart_icon.png";
@@ -80,6 +82,7 @@ import about_4 from "./about_4.jpg";
 
 export const assets = {
   logo,
+  logo_1,
   hero_img,
   homepage,
   about_2,
