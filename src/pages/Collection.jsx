@@ -14,19 +14,20 @@ const Collection = () => {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-          {products.map((product, id) => (
-            <div
-              key={id}
-              className="flex flex-col gap-2 items-center justify-start"
-            >
-              <img
-                className="rounded"
-                src={product.image}
-                alt="product image"
-              />
-              <p>{product.name}</p>
-              <p>${product.price}</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 cursor-pointer">
+          {products.map((item) => (
+            <div key={item.id} className="flex flex-col  justify-start ">
+              {/* image */}
+              <div className="overflow-hidden rounded">
+                <img
+                  loading="lazy"
+                  className="  hover:scale-105 transition-transform duration-200"
+                  src={item.image}
+                  alt="product image"
+                />
+              </div>
+              <p>{item.name}</p>
+              <p className="font-semibold text-sm">${item.price}</p>
             </div>
           ))}
         </div>

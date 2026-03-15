@@ -15,6 +15,6 @@ a.active hr {
   }
 
   .btnDesign {
-    @apply rounded cursor-pointer bg-[#234C6A] py-3 px-5 text-white hover:bg-[#456882];
+    @apply rounded cursor-pointer bg-[#9F8383] py-3 px-5 text-white hover:bg-[#C8AAAA];
   }
 }

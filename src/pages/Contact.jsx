@@ -23,21 +23,26 @@ const Contact = () => {
           <div className="flex flex-col gap-5">
             <h2 className=" text-2xl font-bold">Our Store</h2>
             <p className="text-gray-500">
-              54709 Willms Station Suite 350, Washington, USA
+              9876 Gerard Station Suite ABC, Vancouver, Canada
             </p>
 
             <div className="flex gap-2 items-center text-lg">
               <span>
                 <FaPhoneAlt />
               </span>{" "}
-              <p>(415) 555-0132</p>
+              <p>(123) 456-7890</p>
             </div>
 
             <div className="flex gap-2 items-center text-lg">
               <span>
                 <MdEmail />
               </span>
-              <p className="underline text-blue-700">admin@forever.com</p>
+              <a
+                href="mailto:urvashi.dabgotra@gmail.com"
+                className="underline text-blue-600 hover:text-blue-700"
+              >
+                urvashi.dabgotra11@gmail.com
+              </a>
             </div>
             <h2 className="text-2xl font-bold">Careers at Forever</h2>
             <p className="text-gray-500">
