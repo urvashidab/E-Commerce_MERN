@@ -9,7 +9,7 @@ import { FiPackage, FiLogOut } from "react-icons/fi";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
-  const handleMenu = () => setMenu(!menu);
+  const handleMenu = () => setMenu((prev) => !prev);
 
   return (
     <nav className="flex justify-between items-center py-5 font-medium">
@@ -98,7 +98,7 @@ const Navbar = () => {
             alt="cart icon"
             className="w-5 cursor-pointer"
           ></img>
-          <span className="absolute -top-1 -right-2 bg-[#007E6E] text-white text-xs px-1 rounded-full">
+          <span className="absolute -bottom-0.5 -right-2 bg-[#100f10] text-white text-[9px] px-1 rounded-full">
             0
           </span>
         </Link>

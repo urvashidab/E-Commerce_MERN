@@ -22,7 +22,7 @@ const BestSeller = () => {
       {/* grid for photos */}
 
       <div className="container mx-auto py-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4  ">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4  ">
           {bestSellers.map((item, id) => (
             <div key={id} className="flex flex-col gap-2 justify-start ">
               {/* image */}
