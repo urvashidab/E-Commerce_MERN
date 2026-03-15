@@ -2,15 +2,16 @@ import React from "react";
 import { products } from "../assets/frontend_assets/assets";
 
 const LatestCollection = () => {
-  const latestSellers = products
-    .filter((item) => item.bestseller === true)
-    .slice(0, 5);
+  const latestCollections = [...products]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 10);
+
   return (
     <div className="flex flex-col gap-4 items-center justify-center py-4 ">
       {/* heading best sellers */}
       <div className="flex gap-2  justify-start items-center m-4 ">
         <h1 className="uppercase text-3xl text-gray-500 font-medium ">
-          latest <span className="text-black">sellers</span>
+          latest <span className="text-black">collections</span>
         </h1>
         <span className="linedesign"></span>
       </div>
@@ -22,17 +23,23 @@ const LatestCollection = () => {
 
       <div className="container mx-auto py-4">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4  ">
-          {latestSellers.map((item, id) => (
-            <div key={id} className="flex flex-col gap-2 justify-start ">
+          {latestCollections.map((item) => (
+            <div
+              key={item.id}
+              className="flex flex-col gap-2 justify-start cursor-pointer"
+            >
               {/* image */}
-              <img
-                className="rounded overflow-hidden hover:scale-103 transition-transform duration-200"
-                src={item.image}
-                alt={item.name}
-              ></img>
+              <div className="overflow-hidden rounded">
+                <img
+                  loading="lazy"
+                  className="hover:scale-105 transition-transform duration-200"
+                  src={item.image}
+                  alt={item.name}
+                />
+              </div>
 
               {/* name of product */}
-              <p className="text-sm">${item.name}</p>
+              <p className="text-sm">{item.name}</p>
 
               {/* price od product */}
               <p className="text-sm font-semibold">${item.price}</p>

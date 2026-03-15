@@ -23,17 +23,23 @@ const BestSeller = () => {
 
       <div className="container mx-auto py-4">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4  ">
-          {bestSellers.map((item, id) => (
-            <div key={id} className="flex flex-col gap-2 justify-start ">
+          {bestSellers.map((item) => (
+            <div
+              key={item.id}
+              className="flex flex-col gap-2 justify-start cursor-pointer"
+            >
               {/* image */}
-              <img
-                className="rounded overflow-hidden hover:scale-103 transition-transform duration-200"
-                src={item.image}
-                alt={item.name}
-              ></img>
+              <div className="overflow-hidden rounded">
+                <img
+                  loading="lazy"
+                  className="hover:scale-105 transition-transform duration-200"
+                  src={item.image}
+                  alt={item.name}
+                />
+              </div>
 
               {/* name of product */}
-              <p className="text-sm">${item.name}</p>
+              <p className="text-sm">{item.name}</p>
 
               {/* price od product */}
               <p className="text-sm font-semibold">${item.price}</p>

@@ -15,15 +15,15 @@ const About = () => {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2  items-center">
+        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2  items-center">
           <img
             src={assets.about_1}
             alt="AboutUs Image"
-            className="max-w-lg h-auto rounded-lg"
+            className="  h-auto rounded-lg"
           />
 
           <div className="flex flex-col gap-5">
-            <p className="text-gray-600 leading-7">
+            <p className="text-gray-600 text-lg  leading-7">
               Forever was born out of a passion for innovation and a desire to
               revolutionize the way people shop online. Our journey began with a
               simple idea: to provide a platform where customers can easily
@@ -39,7 +39,7 @@ const About = () => {
 
             <h2 className="text-2xl font-semibold">Our Mission</h2>
 
-            <p className="text-gray-600 leading-7">
+            <p className="text-gray-600 text-lg leading-7">
               Our mission at Forever is to empower customers with choice,
               convenience, and confidence. We're dedicated to providing a
               seamless shopping experience that exceeds expectations, from
