@@ -16,7 +16,7 @@ const LatestCollection = () => {
       </div>
 
       {/* small details one line p tag */}
-      <p>Discover our most popular products loved by customers.</p>
+      <p>Explore our newest arrivals, crafted to keep your style fresh.</p>
 
       {/* grid for photos */}
 
