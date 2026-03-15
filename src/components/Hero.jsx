@@ -23,7 +23,7 @@ const Hero = () => {
 
       {/* right side */}
       <img
-        src={assets.hero_img}
+        src={assets.homepage}
         alt="Hero section image"
         className="md:w-1/2 w-full "
       ></img>

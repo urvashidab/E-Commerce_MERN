@@ -5,8 +5,19 @@ The goal of this project is to practice React fundamentals, state management, an
 
 ## **Tech Stack**
 
-**Frontend** HTML5, React, Tailwind, JavaScript(ES6+), React Router
-**Tools**: Git, GitHub, VS Code
+**Frontend**
+
+- **React**
+- **JavaScript**
+- **HTML**
+- **Tailwind**
+- **React Router**
+
+**Tools**
+
+- **VS Code**
+- **Git**
+- **GitHub**
 
 ## Live Demo
 

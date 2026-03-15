@@ -15,9 +15,9 @@ const About = () => {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2  items-center">
           <img
-            src={assets.about_img}
+            src={assets.about_1}
             alt="AboutUs Image"
             className="max-w-lg h-auto rounded-lg"
           />
@@ -28,11 +28,13 @@ const About = () => {
               revolutionize the way people shop online. Our journey began with a
               simple idea: to provide a platform where customers can easily
               discover, explore, and purchase a wide range of products from the
-              comfort of their homes. Since our inception, we've worked
-              tirelessly to curate a diverse selection of high-quality products
-              that cater to every taste and preference. From fashion and beauty
-              to electronics and home essentials, we offer an extensive
-              collection sourced from trusted brands and suppliers.
+              comfort of their homes. <br></br>
+              <br></br>
+              Since our inception, we've worked tirelessly to curate a diverse
+              selection of high-quality products that cater to every taste and
+              preference. From fashion and beauty to electronics and home
+              essentials, we offer an extensive collection sourced from trusted
+              brands and suppliers.
             </p>
 
             <h2 className="text-2xl font-semibold">Our Mission</h2>
@@ -54,7 +56,7 @@ const About = () => {
         <span className="linedesign"></span>
       </div>
 
-      <div className=" gap-6 grid grid-cols-1 md:grid-cols-3 mt-8 ">
+      <div className=" gap-6 grid grid-cols-1 md:grid-cols-3 mt-4 ">
         {/* left side */}
         <div className="flex flex-col gap-4 justify-start px-10 py-8 shadow-md rounded-xl bg-gray-50 hover:scale-105 transition-all duration-300 hover:shadow-xl">
           <h2 className="font-bold">Quality Assurance:</h2>

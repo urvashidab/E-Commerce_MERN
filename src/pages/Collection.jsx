@@ -20,7 +20,11 @@ const Collection = () => {
               key={id}
               className="flex flex-col gap-2 items-center justify-start"
             >
-              <img src={product.image} alt="product image" />
+              <img
+                className="rounded"
+                src={product.image}
+                alt="product image"
+              />
               <p>{product.name}</p>
               <p>${product.price}</p>
             </div>
