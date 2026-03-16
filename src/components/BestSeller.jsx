@@ -1,8 +1,10 @@
-import React from "react";
-import { products } from "../assets/frontend_assets/assets";
+import React, { useContext } from "react";
+
+import { ProductContext } from "../context/ProductContext";
 
 const BestSeller = () => {
   // to find bestsellers from whole data
+  const { products, currency } = useContext(ProductContext);
   const bestSellers = products
     .filter((item) => item.bestseller === true)
     .slice(0, 5);
@@ -17,7 +19,9 @@ const BestSeller = () => {
       </div>
 
       {/* small details one line p tag */}
-      <p>Discover our most popular products loved by customers.</p>
+      <p className="max-w-xl">
+        Discover our most popular products loved by customers.
+      </p>
 
       {/* grid for photos */}
 
@@ -41,8 +45,11 @@ const BestSeller = () => {
               {/* name of product */}
               <p className="text-sm">{item.name}</p>
 
-              {/* price od product */}
-              <p className="text-sm font-semibold">${item.price}</p>
+              {/* price of product */}
+              <p className="text-sm font-semibold">
+                {currency}
+                {item.price}
+              </p>
             </div>
           ))}
         </div>

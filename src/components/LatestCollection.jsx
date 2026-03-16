@@ -1,7 +1,8 @@
-import React from "react";
-import { products } from "../assets/frontend_assets/assets";
+import React, { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
 
 const LatestCollection = () => {
+  const { products, currency } = useContext(ProductContext);
   const latestCollections = [...products]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 10);
@@ -25,7 +26,7 @@ const LatestCollection = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4  ">
           {latestCollections.map((item) => (
             <div
-              key={item.id}
+              key={item._id}
               className="flex flex-col gap-2 justify-start cursor-pointer"
             >
               {/* image */}
@@ -42,7 +43,10 @@ const LatestCollection = () => {
               <p className="text-sm">{item.name}</p>
 
               {/* price od product */}
-              <p className="text-sm font-semibold">${item.price}</p>
+              <p className="text-sm font-semibold">
+                {currency}
+                {item.price}
+              </p>
             </div>
           ))}
         </div>

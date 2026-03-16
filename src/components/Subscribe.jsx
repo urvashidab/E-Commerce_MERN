@@ -6,8 +6,8 @@ const Subscribe = () => {
     <div className="flex items-center justify-center flex-col gap-4 py-16">
       <h2 className="text-2xl font-semibold">Subscribe now & get 20% off</h2>
       <p className="text-gray-400">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry.
+        Stay updated with our latest collections, exclusive offers, and fashion
+        trends.
       </p>
       <form
         className="flex items-center justify-center"
