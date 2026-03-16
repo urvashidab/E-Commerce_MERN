@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
+import Title from "./Title";
 
 const LatestCollection = () => {
   const { products, currency } = useContext(ProductContext);
@@ -10,15 +11,12 @@ const LatestCollection = () => {
   return (
     <div className="flex flex-col gap-4 items-center justify-center py-4 ">
       {/* heading best sellers */}
-      <div className="flex gap-2  justify-start items-center m-4 ">
-        <h1 className="uppercase text-3xl text-gray-500 font-medium ">
-          latest <span className="text-black">collections</span>
-        </h1>
-        <span className="linedesign"></span>
-      </div>
+      <Title text1="latest" text2="collections" />
 
       {/* small details one line p tag */}
-      <p>Explore our newest arrivals, crafted to keep your style fresh.</p>
+      <p className="max-w-xl">
+        Explore our newest arrivals, crafted to keep your style fresh.
+      </p>
 
       {/* grid for photos */}
 

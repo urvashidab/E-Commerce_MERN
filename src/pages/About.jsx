@@ -7,12 +7,12 @@ const About = () => {
   return (
     <>
       <Line />
-      <div className="flex gap-2 items-center justify-center py-10">
+      {/* <div className="flex gap-2 items-center justify-center py-10">
         <h1 className="uppercase text-2xl text-gray-500 font-medium ">
           About <span className="text-black">us</span>
         </h1>
         <span className="linedesign"></span>
-      </div>
+      </div> */}
 
       <div className="container mx-auto px-4">
         <div className="grid gap-4 grid-cols-1 lg:grid-cols-2  items-center">

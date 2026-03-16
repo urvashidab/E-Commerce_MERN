@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import { ProductContext } from "../context/ProductContext";
+import Title from "./Title";
 
 const BestSeller = () => {
   // to find bestsellers from whole data
@@ -11,12 +12,7 @@ const BestSeller = () => {
   return (
     <div className="flex flex-col gap-4 items-center justify-center py-10 ">
       {/* heading best sellers */}
-      <div className="flex gap-2  justify-start items-center m-4 ">
-        <h1 className="uppercase text-3xl text-gray-500 font-medium ">
-          best <span className="text-black">sellers</span>
-        </h1>
-        <span className="linedesign"></span>
-      </div>
+      <Title className="mt-4" text1="best" text2="sellers" />
 
       {/* small details one line p tag */}
       <p className="max-w-xl">
@@ -29,7 +25,7 @@ const BestSeller = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4  ">
           {bestSellers.map((item) => (
             <div
-              key={item.id}
+              key={item._id}
               className="flex flex-col gap-2 justify-start cursor-pointer"
             >
               {/* image */}
