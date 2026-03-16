@@ -9,51 +9,55 @@ const Collection = () => {
   return (
     <>
       <Line />
-      <Title text1="all" text2="collections" className="py-10" />
+
+      {/* top container for filter title and sorting */}
+      <div className="flex justify-between  py-10">
+        <h1 className="text-2xl">FILTERS</h1>
+        {/* title */}
+        <Title text1="all" text2="collections" />
+
+        {/* sorting dropdown */}
+        <select className="border border-gray-400 p-2 rounded">
+          <option value="relevant">Sort by: Relevant</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+        </select>
+      </div>
 
       {/* whole container starts */}
-      <div className="flex gap-4 justify-between  ">
+      <div className="flex lg:gap-10 justify-between mb-8 ">
         {/* filters start */}
-
-        <div className="w-1/5 flex flex-col gap-4  ">
-          {/* <h1>FILTERS</h1> */}
-
+        <div className="w-1/5 flex flex-col gap-4 text-sm ">
           {/* first category starts */}
-          <div className="flex flex-col gap-4 justify-start border border-gray-400 rounded py-4 px-6 ">
-            <p>CATEGORIES</p>
+          <div className="flex flex-col gap-4 justify-start border border-gray-200 rounded py-4 px-6 ">
+            <p className="font-semibold">CATEGORIES</p>
 
-            <div className="flex flex-col gap-2 ">
+            <div className="flex flex-col gap-3  ">
               <label>
-                <input type="checkbox" />
-                Men
+                <input type="checkbox" /> Men
               </label>
               <label>
-                <input type="checkbox" />
-                Women
+                <input type="checkbox" /> Women
               </label>
               <label>
-                <input type="checkbox" />
-                Kids
+                <input type="checkbox" /> Kids
               </label>
             </div>
           </div>
 
           {/* second category starts */}
-          <div className="flex flex-col gap-4 border border-gray-400 rounded py-4 px-6">
-            <p>TYPE</p>
+          <div className="flex flex-col gap-4 border border-gray-200 rounded py-4 px-6">
+            <p className=" font-semibold">TYPE</p>
 
             <div className="flex flex-col gap-2">
               <label>
-                <input type="checkbox" />
-                Tops
+                <input type="checkbox" /> Topwear
               </label>
               <label>
-                <input type="checkbox" />
-                Bottoms
+                <input type="checkbox" /> Bottomwear
               </label>
               <label>
-                <input type="checkbox" />
-                Winterwear
+                <input type="checkbox" /> Winterwear
               </label>
             </div>
           </div>
