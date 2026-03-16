@@ -4,17 +4,13 @@ import Line from "../components/Line";
 import Subscribe from "../components/Subscribe";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import Title from "../components/Title";
 
 const Contact = () => {
   return (
     <>
       <Line />
-      <div className="flex gap-2 items-center justify-center py-10">
-        <h1 className="uppercase text-2xl text-gray-500 font-medium ">
-          contact <span className="text-black">us</span>
-        </h1>
-        <span className="linedesign"></span>
-      </div>
+      <Title text1="contact" text2="us" className="py-10" />
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

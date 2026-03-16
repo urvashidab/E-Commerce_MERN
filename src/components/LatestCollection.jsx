@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
 import Title from "./Title";
+import ProductItems from "./ProductItems";
 
 const LatestCollection = () => {
   const { products, currency } = useContext(ProductContext);
@@ -23,29 +24,13 @@ const LatestCollection = () => {
       <div className="container mx-auto py-4">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4  ">
           {latestCollections.map((item) => (
-            <div
+            <ProductItems
+              name={item.name}
               key={item._id}
-              className="flex flex-col gap-2 justify-start cursor-pointer"
-            >
-              {/* image */}
-              <div className="overflow-hidden rounded">
-                <img
-                  loading="lazy"
-                  className="hover:scale-105 transition-transform duration-200"
-                  src={item.image}
-                  alt={item.name}
-                />
-              </div>
-
-              {/* name of product */}
-              <p className="text-sm">{item.name}</p>
-
-              {/* price od product */}
-              <p className="text-sm font-semibold">
-                {currency}
-                {item.price}
-              </p>
-            </div>
+              _id={item._id}
+              price={item.price}
+              image={item.image}
+            />
           ))}
         </div>
       </div>

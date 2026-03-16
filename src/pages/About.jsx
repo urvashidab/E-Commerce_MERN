@@ -2,17 +2,14 @@ import React from "react";
 import Line from "../components/Line";
 import Subscribe from "../components/Subscribe";
 import { assets } from "../assets/frontend_assets/assets";
+import Title from "../components/Title";
 
 const About = () => {
   return (
     <>
       <Line />
-      {/* <div className="flex gap-2 items-center justify-center py-10">
-        <h1 className="uppercase text-2xl text-gray-500 font-medium ">
-          About <span className="text-black">us</span>
-        </h1>
-        <span className="linedesign"></span>
-      </div> */}
+
+      <Title text1="about" text2="us" className="py-10" />
 
       <div className="container mx-auto px-4">
         <div className="grid gap-4 grid-cols-1 lg:grid-cols-2  items-center">
