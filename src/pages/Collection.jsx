@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Line from "../components/Line";
 import { ProductContext } from "../context/ProductContext";
 import Title from "../components/Title";
@@ -6,6 +6,12 @@ import ProductItems from "../components/ProductItems";
 
 const Collection = () => {
   const { products } = useContext(ProductContext);
+
+  const [showFilter, setShowFilter] = useState(false);
+
+  function handleFilter() {
+    setShowFilter((prev) => !prev);
+  }
   return (
     <>
       <Line />
@@ -27,7 +33,7 @@ const Collection = () => {
       {/* whole container starts */}
       <div className="flex lg:gap-10 justify-between mb-8 ">
         {/* filters start */}
-        <div className="w-1/5 flex flex-col gap-4 text-sm ">
+        <div className="w-1/5 flex flex-col gap-4 text-sm  ">
           {/* first category starts */}
           <div className="flex flex-col gap-4 justify-start border border-gray-200 rounded py-4 px-6 ">
             <p className="font-semibold">CATEGORIES</p>
