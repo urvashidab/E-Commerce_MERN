@@ -4,7 +4,7 @@ import Title from "./Title";
 import ProductItems from "./ProductItems";
 
 const LatestCollection = () => {
-  const { products, currency } = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   const latestCollections = [...products]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 10);

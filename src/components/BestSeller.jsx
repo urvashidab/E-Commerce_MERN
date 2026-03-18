@@ -6,7 +6,7 @@ import ProductItems from "./ProductItems";
 
 const BestSeller = () => {
   // to find bestsellers from whole data
-  const { products, currency } = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   const bestSellers = products
     .filter((item) => item.bestseller === true)
     .slice(0, 5);
