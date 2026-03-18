@@ -3,6 +3,7 @@ import Line from "../components/Line";
 import { ProductContext } from "../context/ProductContext";
 import Title from "../components/Title";
 import ProductItems from "../components/ProductItems";
+import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 
 const Collection = () => {
   const { products } = useContext(ProductContext);
@@ -16,21 +17,32 @@ const Collection = () => {
   return (
     <>
       <Line />
-      <Title text1="all" text2="collections" className="py-10" />
+      <Title text1="all" text2="collections" className="py-6" />
 
-      {/* main layout- outer div */}
+      {/* MOBILE TOP BAR */}
+      <div className="flex justify-between items-center mb-4 lg:hidden">
+        {/* FILTER BUTTON */}
+        <button
+          onClick={handleFilter}
+          className="flex items-center gap-2 border px-4 py-2 rounded-full text-sm"
+        >
+          FILTERS
+          {showFilter ? <IoIosArrowDown /> : <IoIosArrowForward />}
+        </button>
+
+        {/* SORT */}
+        <select className="text-sm border border-gray-300 px-3 py-2 rounded-full bg-white">
+          <option value="relevant">Sort</option>
+          <option value="low-high">Low → High</option>
+          <option value="high-low">High → Low</option>
+        </select>
+      </div>
+
+      {/* MAIN LAYOUT */}
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Left side-- filters start */}
+        {/* FILTERS */}
         <div className="w-full lg:w-1/5 flex flex-col gap-4 text-sm">
           <h1 className="hidden lg:block text-2xl">FILTERS</h1>
-
-          {/* Mobile Button */}
-          <button
-            onClick={handleFilter}
-            className="lg:hidden border px-4 py-2 rounded"
-          >
-            Filters
-          </button>
 
           <div
             className={`
@@ -74,20 +86,19 @@ const Collection = () => {
             </div>
           </div>
         </div>
-        {/* filters part -- end */}
 
-        {/* CENTER → PRODUCTS */}
+        {/* PRODUCTS */}
         <div className="flex-1">
-          {/* SORT (top-right of products) */}
-          <div className="flex justify-end mb-4">
-            <select className="text-sm border border-gray-300 px-3 py-2 rounded-full bg-white hover:border-gray-500 transition outline-none cursor-pointer">
+          {/* DESKTOP SORT */}
+          <div className="hidden lg:flex justify-end mb-4">
+            <select className="text-sm border border-gray-300 px-3 py-2 rounded-full bg-white">
               <option value="relevant">Sort: Relevant</option>
               <option value="low-high">Price: Low → High</option>
               <option value="high-low">Price: High → Low</option>
             </select>
           </div>
 
-          {/* PRODUCTS GRID */}
+          {/* GRID */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.map((item) => (
               <ProductItems
