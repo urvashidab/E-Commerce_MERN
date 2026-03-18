@@ -12,70 +12,83 @@ const Collection = () => {
   function handleFilter() {
     setShowFilter((prev) => !prev);
   }
+
   return (
     <>
       <Line />
+      <Title text1="all" text2="collections" className="py-10" />
 
-      {/* top container for filter title and sorting */}
-      <div className="flex justify-between  py-10">
-        <h1 className="text-2xl">FILTERS</h1>
-        {/* title */}
-        <Title text1="all" text2="collections" />
+      {/* main layout- outer div */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Left side-- filters start */}
+        <div className="w-full lg:w-1/5 flex flex-col gap-4 text-sm">
+          <h1 className="hidden lg:block text-2xl">FILTERS</h1>
 
-        {/* sorting dropdown */}
-        <select className="border border-gray-400 p-2 rounded">
-          <option value="relevant">Sort by: Relevant</option>
-          <option value="low-high">Price: Low to High</option>
-          <option value="high-low">Price: High to Low</option>
-        </select>
-      </div>
+          {/* Mobile Button */}
+          <button
+            onClick={handleFilter}
+            className="lg:hidden border px-4 py-2 rounded"
+          >
+            Filters
+          </button>
 
-      {/* whole container starts */}
-      <div className="flex lg:gap-10 justify-between mb-8 ">
-        {/* filters start */}
-        <div className="w-1/5 flex flex-col gap-4 text-sm  ">
-          {/* first category starts */}
-          <div className="flex flex-col gap-4 justify-start border border-gray-200 rounded py-4 px-6 ">
-            <p className="font-semibold">CATEGORIES</p>
+          <div
+            className={`
+              ${showFilter ? "block" : "hidden"}
+              lg:block
+              flex flex-col gap-4
+            `}
+          >
+            {/* CATEGORY */}
+            <div className="border border-gray-200 rounded py-4 px-6">
+              <p className="font-semibold mb-3">CATEGORIES</p>
 
-            <div className="flex flex-col gap-3  ">
-              <label>
-                <input type="checkbox" /> Men
-              </label>
-              <label>
-                <input type="checkbox" /> Women
-              </label>
-              <label>
-                <input type="checkbox" /> Kids
-              </label>
+              <div className="flex flex-col gap-2">
+                <label>
+                  <input type="checkbox" /> Men
+                </label>
+                <label>
+                  <input type="checkbox" /> Women
+                </label>
+                <label>
+                  <input type="checkbox" /> Kids
+                </label>
+              </div>
+            </div>
+
+            {/* TYPE */}
+            <div className="border border-gray-200 rounded py-4 px-6">
+              <p className="font-semibold mb-3">TYPE</p>
+
+              <div className="flex flex-col gap-2">
+                <label>
+                  <input type="checkbox" /> Topwear
+                </label>
+                <label>
+                  <input type="checkbox" /> Bottomwear
+                </label>
+                <label>
+                  <input type="checkbox" /> Winterwear
+                </label>
+              </div>
             </div>
           </div>
-
-          {/* second category starts */}
-          <div className="flex flex-col gap-4 border border-gray-200 rounded py-4 px-6">
-            <p className=" font-semibold">TYPE</p>
-
-            <div className="flex flex-col gap-2">
-              <label>
-                <input type="checkbox" /> Topwear
-              </label>
-              <label>
-                <input type="checkbox" /> Bottomwear
-              </label>
-              <label>
-                <input type="checkbox" /> Winterwear
-              </label>
-            </div>
-          </div>
-
-          {/* second category ends */}
         </div>
+        {/* filters part -- end */}
 
-        {/* filters end */}
-
-        {/* products items for all the products */}
+        {/* CENTER → PRODUCTS */}
         <div className="flex-1">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 cursor-pointer">
+          {/* SORT (top-right of products) */}
+          <div className="flex justify-end mb-4">
+            <select className="text-sm border border-gray-300 px-3 py-2 rounded-full bg-white hover:border-gray-500 transition outline-none cursor-pointer">
+              <option value="relevant">Sort: Relevant</option>
+              <option value="low-high">Price: Low → High</option>
+              <option value="high-low">Price: High → Low</option>
+            </select>
+          </div>
+
+          {/* PRODUCTS GRID */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.map((item) => (
               <ProductItems
                 key={item._id}
@@ -87,8 +100,6 @@ const Collection = () => {
             ))}
           </div>
         </div>
-
-        {/* container ends */}
       </div>
     </>
   );
