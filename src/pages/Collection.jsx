@@ -53,6 +53,13 @@ const Collection = () => {
   // filtering
   let filteredProducts = [...products];
 
+  // for search query
+  if (searchQuery.trim() !== "") {
+    filteredProducts = filteredProducts.filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+  }
+
   if (selectedCategories.length > 0) {
     filteredProducts = filteredProducts.filter((product) =>
       selectedCategories.includes(product.category),
@@ -89,7 +96,7 @@ const Collection = () => {
             placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 outline-none"
+            className="flex-1 outline-none bg-transparent"
           />
 
           <button
@@ -229,8 +236,10 @@ const Collection = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-400 text-md mt-10 text-start lg:text-lg ">
-              No products match the selected filters.
+            <p className="text-gray-400 text-md mt-10 text-start lg:text-lg">
+              {searchQuery
+                ? `No results found for "${searchQuery}"`
+                : "No products match the selected filters."}
             </p>
           )}
         </div>
