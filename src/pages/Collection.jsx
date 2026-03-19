@@ -9,20 +9,68 @@ const Collection = () => {
   const { products } = useContext(ProductContext);
 
   const [showFilter, setShowFilter] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
+  const [sortType, setSortType] = useState("relevant");
 
+  // for mobile screens
   function handleFilter() {
     setShowFilter((prev) => !prev);
   }
 
-  // sorting
-  const [sortType, setSortType] = useState("relevant");
+  // reusable checkbox handler
+  function handleCheckboxChange(value, checked, state, setState) {
+    if (checked) {
+      setState([...state, value]);
+    } else {
+      setState(state.filter((item) => item !== value));
+    }
+  }
 
-  let sortedProducts = [...products];
+  function handleCategoryChange(e) {
+    handleCheckboxChange(
+      e.target.value,
+      e.target.checked,
+      selectedCategories,
+      setSelectedCategories,
+    );
+  }
+
+  function handleTypeChange(e) {
+    handleCheckboxChange(
+      e.target.value,
+      e.target.checked,
+      selectedTypes,
+      setSelectedTypes,
+    );
+  }
+
+  function handleSorting(e) {
+    setSortType(e.target.value);
+  }
+
+  // filtering
+  let filteredProducts = [...products];
+
+  if (selectedCategories.length > 0) {
+    filteredProducts = filteredProducts.filter((product) =>
+      selectedCategories.includes(product.category),
+    );
+  }
+
+  if (selectedTypes.length > 0) {
+    filteredProducts = filteredProducts.filter((product) =>
+      selectedTypes.includes(product.subCategory),
+    );
+  }
+
+  // sorting (safe copy)
+  let finalProducts = [...filteredProducts];
 
   if (sortType === "low-high") {
-    sortedProducts.sort((a, b) => a.price - b.price);
+    finalProducts.sort((a, b) => a.price - b.price);
   } else if (sortType === "high-low") {
-    sortedProducts.sort((a, b) => b.price - a.price);
+    finalProducts.sort((a, b) => b.price - a.price);
   }
 
   return (
@@ -30,9 +78,9 @@ const Collection = () => {
       <Line />
       <Title text1="all" text2="collections" className="py-6" />
 
-      {/* small screen -- top bar */}
+      {/* for small screens-mobile top bar */}
       <div className="flex justify-between items-center mb-4 lg:hidden">
-        {/* filter button */}
+        {/* left side- button for filter */}
         <button
           onClick={handleFilter}
           className="flex items-center gap-2 border px-4 py-2 rounded-full text-sm"
@@ -41,9 +89,9 @@ const Collection = () => {
           {showFilter ? <IoIosArrowDown /> : <IoIosArrowForward />}
         </button>
 
-        {/* sort */}
+        {/* right side- for sorting selection box */}
         <select
-          onChange={(e) => setSortType(e.target.value)}
+          onChange={handleSorting}
           className="text-sm border border-gray-300 px-3 py-2 rounded-full bg-white"
         >
           <option value="relevant">Sort: Relevant</option>
@@ -52,11 +100,11 @@ const Collection = () => {
         </select>
       </div>
 
-      {/* main layout div */}
+      {/* MAIN LAYOUT */}
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* left side-- filters */}
+        {/* FILTERS */}
         <div className="w-full lg:w-1/5 flex flex-col gap-4 text-sm">
-          <h1 className="hidden lg:block text-2xl">FILTERS</h1>
+          <p className="hidden lg:block text-2xl">FILTERS</p>
 
           <div
             className={`
@@ -66,19 +114,24 @@ const Collection = () => {
             `}
           >
             {/* CATEGORY */}
-            <div className="border border-gray-200 rounded py-4 px-6 md:mb-4">
+            <div className="border border-gray-200 rounded py-4 px-6">
               <p className="font-semibold mb-3">CATEGORIES</p>
 
               <div className="flex flex-col gap-2">
-                <label>
-                  <input type="checkbox" /> Men
-                </label>
-                <label>
-                  <input type="checkbox" /> Women
-                </label>
-                <label>
-                  <input type="checkbox" /> Kids
-                </label>
+                {["Men", "Women", "Kids"].map((cat) => (
+                  <label
+                    key={cat}
+                    className="flex items-center gap-2 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      value={cat}
+                      checked={selectedCategories.includes(cat)}
+                      onChange={handleCategoryChange}
+                    />
+                    {cat}
+                  </label>
+                ))}
               </div>
             </div>
 
@@ -87,26 +140,42 @@ const Collection = () => {
               <p className="font-semibold mb-3">TYPE</p>
 
               <div className="flex flex-col gap-2">
-                <label>
-                  <input type="checkbox" /> Topwear
-                </label>
-                <label>
-                  <input type="checkbox" /> Bottomwear
-                </label>
-                <label>
-                  <input type="checkbox" /> Winterwear
-                </label>
+                {["Topwear", "Bottomwear", "Winterwear"].map((type) => (
+                  <label
+                    key={type}
+                    className="flex items-center gap-2 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      value={type}
+                      checked={selectedTypes.includes(type)}
+                      onChange={handleTypeChange}
+                    />
+                    {type}
+                  </label>
+                ))}
               </div>
             </div>
+
+            {/* CLEAR FILTERS */}
+            <button
+              onClick={() => {
+                setSelectedCategories([]);
+                setSelectedTypes([]);
+              }}
+              className="text-xs text-gray-500 underline mt-2 cursor-pointer"
+            >
+              Clear Filters
+            </button>
           </div>
         </div>
 
-        {/* middle part-- products  */}
+        {/* PRODUCTS */}
         <div className="flex-1">
-          {/* desktop- sort */}
+          {/* DESKTOP SORT */}
           <div className="hidden lg:flex justify-end mb-4">
             <select
-              onChange={(e) => setSortType(e.target.value)}
+              onChange={handleSorting}
               className="text-sm border border-gray-300 px-3 py-2 rounded-full bg-white"
             >
               <option value="relevant">Sort: Relevant</option>
@@ -115,18 +184,29 @@ const Collection = () => {
             </select>
           </div>
 
-          {/* products items-grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {sortedProducts.map((item) => (
-              <ProductItems
-                key={item._id}
-                _id={item._id}
-                name={item.name}
-                price={item.price}
-                image={item.image}
-              />
-            ))}
-          </div>
+          {/* COUNT */}
+          <p className="text-sm text-gray-400 mb-3">
+            {finalProducts.length} item{finalProducts.length !== 1 && "s"}
+          </p>
+
+          {/* GRID */}
+          {finalProducts.length > 0 ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {finalProducts.map((item) => (
+                <ProductItems
+                  key={item._id}
+                  _id={item._id}
+                  name={item.name}
+                  price={item.price}
+                  image={item.image}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-400 text-md mt-10 text-center lg:text-lg ">
+              No products match the selected filters.
+            </p>
+          )}
         </div>
       </div>
     </>
