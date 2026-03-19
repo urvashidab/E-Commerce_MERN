@@ -6,7 +6,8 @@ import ProductItems from "../components/ProductItems";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 
 const Collection = () => {
-  const { products } = useContext(ProductContext);
+  const { products, searchQuery, setSearchQuery, showSearch, setShowSearch } =
+    useContext(ProductContext);
 
   const [showFilter, setShowFilter] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -78,6 +79,30 @@ const Collection = () => {
       <Line />
       <Title text1="all" text2="collections" className="py-6" />
 
+      {/* for search bar */}
+
+      {showSearch && (
+        <div className="flex items-center gap-3 mb-6 border border-gray-300 p-3 rounded-full">
+          <input
+            autoFocus
+            type="text"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="flex-1 outline-none"
+          />
+
+          <button
+            onClick={() => {
+              setShowSearch(false);
+              setSearchQuery("");
+            }}
+            className="text-sm cursor-pointer text-gray-400"
+          >
+            ✖
+          </button>
+        </div>
+      )}
       {/* for small screens-mobile top bar */}
       <div className="flex justify-between items-center mb-4 lg:hidden">
         {/* left side- button for filter */}

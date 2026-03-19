@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/frontend_assets/assets";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, Navigate, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdCancel } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { FiPackage, FiLogOut } from "react-icons/fi";
+import { ProductContext } from "../context/ProductContext";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
   const handleMenu = () => setMenu((prev) => !prev);
+  const { setShowSearch } = useContext(ProductContext);
+
+  const navigate = useNavigate();
+  // to activate click on search image
+  function handleSearch() {
+    setShowSearch(true);
+    navigate("/collection");
+  }
 
   return (
     <nav className="flex justify-between items-center py-5 font-medium">
@@ -51,6 +60,7 @@ const Navbar = () => {
 
       <div className="flex justify-center gap-6">
         <img
+          onClick={handleSearch}
           src={assets.search_icon}
           alt="search icon"
           className="w-5 cursor-pointer"
