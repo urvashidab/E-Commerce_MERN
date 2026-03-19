@@ -101,7 +101,7 @@ const Collection = () => {
       </div>
 
       {/* MAIN LAYOUT */}
-      <div className="flex flex-col lg:flex-row gap-6">
+      <div className="flex flex-col lg:flex-row gap-6 mb-8">
         {/* FILTERS */}
         <div className="w-full lg:w-1/5 flex flex-col gap-4 text-sm">
           <p className="hidden lg:block text-2xl">FILTERS</p>
@@ -114,7 +114,7 @@ const Collection = () => {
             `}
           >
             {/* CATEGORY */}
-            <div className="border border-gray-200 rounded py-4 px-6">
+            <div className="border border-gray-200 rounded py-4 px-6 mb-2">
               <p className="font-semibold mb-3">CATEGORIES</p>
 
               <div className="flex flex-col gap-2">
@@ -186,7 +186,8 @@ const Collection = () => {
 
           {/* COUNT */}
           <p className="text-sm text-gray-400 mb-3">
-            {finalProducts.length} item{finalProducts.length !== 1 && "s"}
+            {finalProducts.length}{" "}
+            {finalProducts.length === 1 ? "item" : "items"}
           </p>
 
           {/* GRID */}
@@ -203,7 +204,7 @@ const Collection = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-400 text-md mt-10 text-center lg:text-lg ">
+            <p className="text-gray-400 text-md mt-10 text-start lg:text-lg ">
               No products match the selected filters.
             </p>
           )}
