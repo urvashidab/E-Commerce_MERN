@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
 import { useParams } from "react-router-dom";
 import Line from "../components/Line";
+import Title from "../components/Title";
+import ProductItems from "../components/ProductItems";
 
 export default function Product() {
   const { products, currency } = useContext(ProductContext);
@@ -15,12 +17,32 @@ export default function Product() {
     setProductData(foundProduct);
   }, [productID, products]);
 
+  // to scrolls to up
+  useEffect(
+    () =>
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      }),
+    [productID],
+  );
   //console.log(productID);
 
   // loading product
   if (!productData) {
     return <p className="text-center text-lg mt-10">Loading</p>;
   }
+
+  // related product functionality
+  const relatedProduct = products
+    .filter((item) => {
+      return (
+        item._id !== productID &&
+        item.category === productData.category &&
+        item.subCategory === productData.subCategory
+      );
+    })
+    .slice(0, 4);
 
   // ensure if image is an array
   const imagesArr = Array.isArray(productData.image)
@@ -110,9 +132,29 @@ export default function Product() {
         </div>
 
         {/* right side- ends */}
-
-        {/* related products  */}
       </div>
+
+      {/* related products  */}
+
+      {/* <Title text1="related" text2="products" className="py-10" />  */}
+
+      <div className="mt-8 ">
+        <p className="text-2xl font-medium mb-4">Related Products</p>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-6">
+          {relatedProduct.map((item) => (
+            <ProductItems
+              key={item._id}
+              _id={item._id}
+              image={item.image}
+              name={item.name}
+              price={item.price}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* related product ends */}
     </>
   );
 }
