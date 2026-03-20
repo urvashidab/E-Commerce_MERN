@@ -12,6 +12,24 @@ export default function Product() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
 
+  const [count, setCount] = useState(1);
+
+  //increment quantity
+  function incrementQuantity() {
+    setCount((prev) => prev + 1);
+  }
+  // function decrementQuantity
+  function decrementQuantity() {
+    // to make sure count is not less than 1
+    setCount((prev) => {
+      if (prev === 1) {
+        return 1;
+      } else {
+        return prev - 1;
+      }
+    });
+  }
+
   useEffect(() => {
     const foundProduct = products.find((item) => item._id === productID);
     setProductData(foundProduct);
@@ -80,8 +98,9 @@ export default function Product() {
             alt={productData.name}
           ></img>
         </div>
+
         {/* right side- product details */}
-        <div className="flex flex-col gap-7 justify-start  py-4 ">
+        <div className="flex flex-col gap-4 justify-start  py-4 ">
           <h1 className="text-2xl font-semibold">{productData.name}</h1>
 
           {/*  rating -static for now */}
@@ -103,7 +122,7 @@ export default function Product() {
 
           {productData.sizes && (
             <div>
-              <p className="text-md font-medium mb-4">Select Size</p>
+              <p className="text-md font-medium mb-4">Select Size (US)</p>
               <div className="flex gap-4 ">
                 {productData.sizes.map((size) => (
                   <button
@@ -118,8 +137,31 @@ export default function Product() {
             </div>
           )}
 
+          {/* quantity increase/decrease  */}
+          <div>
+            <p className="text-md font-medium mb-2">Quantity</p>
+
+            <div className="flex items-center gap-4">
+              <button
+                onClick={decrementQuantity}
+                className="border border-gray-300 px-3 py-1 text-lg rounded-md bg-gray-100 hover:bg-gray-300 cursor-pointer transition duration-200"
+              >
+                -
+              </button>
+
+              <span className="text-lg">{count}</span>
+
+              <button
+                onClick={incrementQuantity}
+                className="border border-gray-300 px-3 py-1 text-lg rounded-md bg-gray-100 hover:bg-gray-300 cursor-pointer transition duration-200"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
           {/* add to cart button */}
-          <button className="w-full lg:w-1/2 border  bg-black text-white cursor-pointer py-2 px-3 mt-4">
+          <button className="w-full lg:w-1/2 border   bg-black text-white cursor-pointer py-2 px-3 mt-4">
             Add to cart
           </button>
           {/* line */}
