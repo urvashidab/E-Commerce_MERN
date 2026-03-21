@@ -6,7 +6,8 @@ import Title from "../components/Title";
 import ProductItems from "../components/ProductItems";
 
 export default function Product() {
-  const { products, currency } = useContext(ProductContext);
+  const { products, currency, cartItems, addToCart } =
+    useContext(ProductContext);
   const { productID } = useParams();
   const [productData, setProductData] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -28,6 +29,17 @@ export default function Product() {
         return prev - 1;
       }
     });
+  }
+
+  // handle Cart click
+  function handleAddToCart() {
+    // size validation
+    if (productData.sizes && !selectedSize) {
+      alert("Please select size");
+      return;
+    }
+
+    addToCart(productData, selectedSize, count);
   }
 
   useEffect(() => {
@@ -127,7 +139,7 @@ export default function Product() {
                 {productData.sizes.map((size) => (
                   <button
                     onClick={() => setSelectedSize(size)}
-                    className={`cursor-pointer py-2 px-4 text-center  ${selectedSize === size ? "bg-black border-black text-white" : "bg-gray-100 border-gray-300"}`}
+                    className={`cursor-pointer py-2 px-4 text-center hover:bg-black hover:text-white  ${selectedSize === size ? "bg-black border-black text-white" : "bg-gray-100 border-gray-300"}`}
                     key={size}
                   >
                     {size}
@@ -161,7 +173,10 @@ export default function Product() {
           </div>
 
           {/* add to cart button */}
-          <button className="w-full lg:w-1/2 border   bg-black text-white cursor-pointer py-2 px-3 mt-4">
+          <button
+            onClick={handleAddToCart}
+            className="w-full lg:w-1/2 border   bg-black text-white cursor-pointer py-2 px-3 mt-4"
+          >
             Add to cart
           </button>
           {/* line */}

@@ -8,6 +8,42 @@ export const ContextProvider = ({ children }) => {
   const deliveryFees = 10;
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  // function to add items to cart
+
+  function addToCart(product, size, quantity) {
+    setCartItems((prevCart) => {
+      // check if product already exists with same size
+      const existingItem = prevCart.find((item) => {
+        return item._id === product._id && item.size === size;
+      });
+
+      // if exists → increase quantity
+      if (existingItem) {
+        return prevCart.map((item) => {
+          if (item._id === product._id && item.size === size) {
+            return {
+              ...item,
+              quantity: item.quantity + quantity,
+            };
+          }
+
+          return item;
+        });
+      }
+
+      // if new item → add to cart
+      return [
+        ...prevCart,
+        {
+          ...product,
+          size: size,
+          quantity: quantity,
+        },
+      ];
+    });
+  }
 
   return (
     <ProductContext.Provider
@@ -19,6 +55,8 @@ export const ContextProvider = ({ children }) => {
         setSearchQuery,
         setShowSearch,
         showSearch,
+        cartItems,
+        addToCart,
       }}
     >
       {children}
