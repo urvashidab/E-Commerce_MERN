@@ -40,6 +40,7 @@ export default function Product() {
     }
 
     addToCart(productData, selectedSize, count);
+    setCount(1); // reset count
   }
 
   useEffect(() => {

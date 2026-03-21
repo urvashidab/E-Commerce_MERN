@@ -11,7 +11,7 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
   const handleMenu = () => setMenu((prev) => !prev);
-  const { setShowSearch } = useContext(ProductContext);
+  const { setShowSearch, cartItems } = useContext(ProductContext);
 
   const navigate = useNavigate();
   // to activate click on search image
@@ -109,7 +109,7 @@ const Navbar = () => {
             className="w-5 cursor-pointer"
           ></img>
           <span className="absolute -bottom-0.5 -right-2 bg-[#100f10] text-white text-[9px] px-1 rounded-full">
-            0
+            {cartItems.reduce((total, item) => total + item.quantity, 0)}
           </span>
         </Link>
       </div>
