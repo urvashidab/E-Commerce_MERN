@@ -6,6 +6,7 @@ export const ProductContext = createContext();
 export const ContextProvider = ({ children }) => {
   const currency = "$";
   const deliveryFees = 10;
+  const tax = 8; // 8%
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState([]);
@@ -57,6 +58,7 @@ export const ContextProvider = ({ children }) => {
         showSearch,
         cartItems,
         addToCart,
+        tax,
       }}
     >
       {children}
