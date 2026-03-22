@@ -1,15 +1,33 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
 import Line from "../components/Line";
 import Title from "../components/Title";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export default function Cart() {
-  const { products, currency, deliveryFees, cartItems, tax } =
-    useContext(ProductContext);
+  const { currency, deliveryFees, cartItems, tax } = useContext(ProductContext);
 
   // to find total number of items in cart
-  let totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
+  // to find the total price
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
+
+  const taxAmount = (totalPrice * tax) / 100;
+
+  // free delivery above 2000
+  const finalDeliveryFees = totalPrice >= 2000 ? 0 : deliveryFees;
+
+  const deliveryAmount =
+    totalPrice >= 2000 ? "FREE" : `${currency}${deliveryFees}`;
+
+  const grandTotal = totalPrice + finalDeliveryFees + taxAmount;
 
   console.log(cartItems);
   return (
@@ -101,17 +119,29 @@ export default function Cart() {
             {/* total */}
             <div className="flex gap-1">
               <span>{currency}</span>
-              <p>1000</p>
+              <p>{totalPrice.toFixed(2)}</p>
             </div>
           </div>
           <hr className="my-2 text-gray-300" />
+          {/* {totalPrice < 2000 && (
+            <p className="text-sm text-gray-500">
+              Add {currency}
+              {(2000 - totalPrice).toFixed(2)} more for FREE delivery
+            </p>
+          )} */}
+
           {/* 3: deliver ------- */}
           <div className="flex justify-between">
             <p>Delivery</p>
             {/* total */}
             <div className="flex gap-1">
-              <span>{currency}</span>
-              <p>{deliveryFees}</p>
+              <p
+                className={
+                  deliveryAmount === "FREE" ? "text-red-400 font-medium" : ""
+                }
+              >
+                {deliveryAmount}
+              </p>
             </div>
           </div>
           <hr className="my-2 text-gray-300" />
@@ -120,8 +150,8 @@ export default function Cart() {
             <p>Tax</p>
             {/* total */}
             <div className="flex gap-1">
-              <p>{tax}</p>
-              <span>%</span>
+              <span>{currency}</span>
+              <p>{taxAmount.toFixed(2)}</p>
             </div>
           </div>
           <hr className="my-2 text-gray-300" />
@@ -131,7 +161,7 @@ export default function Cart() {
             {/* total */}
             <div className="flex gap-1">
               <span>{currency}</span>
-              <p>1000</p>
+              <p>{grandTotal.toFixed(2)}</p>
             </div>
           </div>
           {/* button */}
