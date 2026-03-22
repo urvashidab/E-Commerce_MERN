@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
 import Line from "../components/Line";
 import Title from "../components/Title";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export default function Cart() {
-  const { currency, deliveryFees, cartItems, tax } = useContext(ProductContext);
+  const { currency, deleteFromCart, deliveryFees, cartItems, tax } =
+    useContext(ProductContext);
 
   // to find total number of items in cart
   const totalItems = cartItems.reduce(
@@ -89,7 +90,10 @@ export default function Cart() {
                       </button>
                     </div>
                     {/* remove button */}
-                    <button className="text-lg text-red-500 cursor-pointer hover:bg-gray-200 hover:border hover:border-black max-w-fit p-2 text-left hover:text-black">
+                    <button
+                      onClick={() => deleteFromCart(item._id, item.size)}
+                      className="text-lg text-red-500 cursor-pointer hover:bg-gray-200 hover:border hover:border-black max-w-fit p-2 text-left hover:text-black"
+                    >
                       <RiDeleteBin6Line />
                     </button>
                   </div>

@@ -46,6 +46,16 @@ export const ContextProvider = ({ children }) => {
     });
   }
 
+  // function to update quanity of the cart on --cart page--
+
+  function updateCartQuantity(size, item) {}
+
+  // function to delete items in cart -- cart page
+  function deleteFromCart(id, size) {
+    setCartItems((prev) =>
+      prev.filter((item) => !(item._id === id && item.size === size)),
+    );
+  }
   return (
     <ProductContext.Provider
       value={{
@@ -59,6 +69,7 @@ export const ContextProvider = ({ children }) => {
         cartItems,
         addToCart,
         tax,
+        deleteFromCart,
       }}
     >
       {children}
