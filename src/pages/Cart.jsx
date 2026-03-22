@@ -1,7 +1,15 @@
-import React from "react";
+import { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
+import Line from "../components/Line";
 
-const Cart = () => {
-  return <div></div>;
-};
+export default function Cart() {
+  const { products, currency, deliveryFees, cartItems } =
+    useContext(ProductContext);
 
-export default Cart;
+  return (
+    <>
+      <Line />
+      <div></div>
+    </>
+  );
+}

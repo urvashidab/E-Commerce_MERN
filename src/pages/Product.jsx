@@ -12,6 +12,7 @@ export default function Product() {
   const [productData, setProductData] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
+  const [sizeError, setSizeError] = useState("");
 
   const [count, setCount] = useState(1);
 
@@ -35,12 +36,13 @@ export default function Product() {
   function handleAddToCart() {
     // size validation
     if (productData.sizes && !selectedSize) {
-      alert("Please select size");
+      setSizeError("Please select a size");
       return;
     }
-
+    setSizeError(""); // cleaer error on success
     addToCart(productData, selectedSize, count);
     setCount(1); // reset count
+    setSelectedSize(""); // reset size option
   }
 
   useEffect(() => {
@@ -131,6 +133,7 @@ export default function Product() {
           <p className="text-gray-500 text-md  max-w-lg leading-7">
             {productData.description || "No description available."}
           </p>
+
           {/* div for size */}
 
           {productData.sizes && (
@@ -139,7 +142,10 @@ export default function Product() {
               <div className="flex gap-4 ">
                 {productData.sizes.map((size) => (
                   <button
-                    onClick={() => setSelectedSize(size)}
+                    onClick={() => {
+                      setSelectedSize(size);
+                      setSizeError(""); // clear when user selects a size
+                    }}
                     className={`cursor-pointer py-2 px-4 text-center hover:bg-black hover:text-white  ${selectedSize === size ? "bg-black border-black text-white" : "bg-gray-100 border-gray-300"}`}
                     key={size}
                   >
@@ -149,7 +155,10 @@ export default function Product() {
               </div>
             </div>
           )}
-
+          {/* inline error message for size */}
+          {sizeError && (
+            <p className="text-red-500 mt-2 text-sm">{sizeError}</p>
+          )}
           {/* quantity increase/decrease  */}
           <div>
             <p className="text-md font-medium mb-2">Quantity</p>
