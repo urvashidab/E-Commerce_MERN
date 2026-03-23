@@ -1,9 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Line from "../components/Line";
 import { ProductContext } from "../context/ProductContext";
 
 export default function PlaceOrder() {
   const { currency, deliveryFees, cartItems, tax } = useContext(ProductContext);
+
+  // handle form button
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert("Submitted");
+  }
 
   const totalItems = cartItems.reduce(
     (total, item) => total + item.quantity,
@@ -42,7 +49,11 @@ export default function PlaceOrder() {
           </h1>
 
           {/* form */}
-          <form action="" className="flex flex-col gap-4  mt-4">
+          <form
+            id="myForm"
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-4  mt-4"
+          >
             {/* name */}
             <input
               type="text"
@@ -102,7 +113,7 @@ export default function PlaceOrder() {
             </div>
             {/* phone */}
             <input
-              type="number"
+              type="tel"
               required
               placeholder="TELEPHONE"
               className="border-b  mb-2 border-gray-400  py-2 px-2 outline-none placeholder:text-gray-300 "
@@ -199,7 +210,11 @@ export default function PlaceOrder() {
           </div>
 
           {/* place order button */}
-          <button className="w-fit self-start border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-3 px-12 mt-6 tracking-wide">
+          <button
+            form="myForm"
+            type="submit"
+            className="w-fit self-start border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-3 px-12 mt-6 tracking-wide"
+          >
             PLACE ORDER
           </button>
         </div>
