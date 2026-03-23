@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { products } from "../assets/frontend_assets/assets";
 
 export const ProductContext = createContext();
@@ -9,7 +9,10 @@ export const ContextProvider = ({ children }) => {
   const tax = 8; // 8%
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem("cartItems");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
   // function to add items to cart
 
@@ -49,6 +52,11 @@ export const ContextProvider = ({ children }) => {
   // function to update quanity of the cart on --cart page--
 
   function updateCartQuantity(size, item) {}
+
+  // page refresh but items in the cart dont get removed
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   // function to delete items in cart -- cart page
   function deleteFromCart(id, size) {
