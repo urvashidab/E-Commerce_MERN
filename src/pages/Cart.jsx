@@ -51,7 +51,7 @@ export default function Cart() {
             </h1>
             <p className="text-2xl text-gray-500">
               {`( ${totalItems} `}
-              {totalItems === 1 ? "item" : "items )"}
+              {totalItems === 1 ? "item )" : "items )"}
             </p>
           </div>
 
