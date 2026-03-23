@@ -3,6 +3,7 @@ import { ProductContext } from "../context/ProductContext";
 import Line from "../components/Line";
 import Title from "../components/Title";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const {
@@ -194,9 +195,12 @@ export default function Cart() {
             </div>
           </div>
           {/* button */}
-          <button className="w-full border bg-black text-white cursor-pointer hover:bg-gray-700 py-2 px-3 mt-4">
-            CHECKOUT
-          </button>
+          <Link to="/placeorder">
+            <button className="w-full border bg-black text-white cursor-pointer hover:bg-gray-700 py-2 px-3 mt-4">
+              CHECKOUT
+            </button>
+          </Link>
+
           {/* right side end */}
         </div>
       </div>

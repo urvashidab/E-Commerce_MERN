@@ -108,7 +108,7 @@ const Navbar = () => {
             alt="cart icon"
             className="w-5 cursor-pointer"
           ></img>
-          <span className="absolute -bottom-0.5 -right-2 bg-[#100f10] text-white text-[9px] px-1 rounded-full">
+          <span className="absolute -bottom-0.5 -right-2 bg-[#C08552] text-white text-[9px] px-1 rounded-full">
             {cartItems.reduce((total, item) => total + item.quantity, 0)}
           </span>
         </Link>
