@@ -3,7 +3,31 @@ import Line from "../components/Line";
 import { ProductContext } from "../context/ProductContext";
 
 export default function PlaceOrder() {
-  const { currency } = useContext(ProductContext);
+  const { currency, deliveryFees, cartItems, tax } = useContext(ProductContext);
+
+  const totalItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
+
+  // free delivery above 2000
+  const finalDeliveryFees = totalPrice >= 2000 ? 0 : deliveryFees;
+
+  const deliveryAmount =
+    totalPrice >= 2000 ? "FREE" : `${currency}${deliveryFees}`;
+
+  const taxFees = (totalPrice * tax) / 100;
+
+  const grandTotal = totalPrice + taxFees + finalDeliveryFees;
+
+  console.log(totalItems);
+  console.log(totalPrice);
+
   return (
     <>
       <Line />
@@ -100,12 +124,16 @@ export default function PlaceOrder() {
           <div className="flex flex-col gap-3 text-sm md:text-base">
             <div className="flex justify-between">
               <p>Subtotal</p>
-              <p>{currency} 1000</p>
+              <p>
+                {currency} {totalPrice.toFixed(2)}
+              </p>
             </div>
 
             <div className="flex justify-between">
               <p>Delivery</p>
-              <p>{currency} 10</p>
+              <p className={deliveryAmount === "FREE" ? "text-red-500" : ""}>
+                {deliveryAmount}
+              </p>
             </div>
             <p className="text-xs text-gray-500">
               Estimated delivery: 3–5 business days
@@ -113,14 +141,18 @@ export default function PlaceOrder() {
 
             <div className="flex justify-between">
               <p>Tax</p>
-              <p>{currency} 22</p>
+              <p>
+                {currency} {taxFees.toFixed(2)}
+              </p>
             </div>
 
             <hr className="border-gray-300 my-2" />
 
             <div className="flex justify-between font-semibold text-base md:text-lg">
               <p>Total</p>
-              <p>{currency} 300</p>
+              <p>
+                {currency} {grandTotal.toFixed(2)}
+              </p>
             </div>
           </div>
           <hr className="border-gray-300 mt-2" />
