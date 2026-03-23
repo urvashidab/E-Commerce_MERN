@@ -86,6 +86,7 @@ export default function Cart() {
                   <div className="flex items-center gap-8 mt-2">
                     <div className="flex items-center gap-3 ">
                       <button
+                        disabled={item.quantity === 1}
                         onClick={() =>
                           updateCartQuantity(
                             item._id,
@@ -93,7 +94,7 @@ export default function Cart() {
                             item.quantity - 1,
                           )
                         }
-                        className="border px-2 py-1 rounded border-gray-300 cursor-pointer hover:bg-gray-200"
+                        className="border px-2 py-1 rounded border-gray-300 cursor-pointer hover:bg-gray-200 disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         -
                       </button>
@@ -116,7 +117,7 @@ export default function Cart() {
                     {/* remove button */}
                     <button
                       onClick={() => deleteFromCart(item._id, item.size)}
-                      className="text-lg text-red-500 cursor-pointer hover:bg-gray-200 hover:border hover:border-black max-w-fit p-2 text-left hover:text-black"
+                      className="text-xl text-red-500 cursor-pointer  hover:text-black"
                     >
                       <RiDeleteBin6Line />
                     </button>
