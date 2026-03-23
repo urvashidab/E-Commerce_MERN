@@ -5,8 +5,14 @@ import Title from "../components/Title";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export default function Cart() {
-  const { currency, deleteFromCart, deliveryFees, cartItems, tax } =
-    useContext(ProductContext);
+  const {
+    currency,
+    deleteFromCart,
+    deliveryFees,
+    cartItems,
+    tax,
+    updateCartQuantity,
+  } = useContext(ProductContext);
 
   // to find total number of items in cart
   const totalItems = cartItems.reduce(
@@ -79,13 +85,31 @@ export default function Cart() {
                   {/* quantity */}
                   <div className="flex items-center gap-8 mt-2">
                     <div className="flex items-center gap-3 ">
-                      <button className="border px-2 py-1 rounded border-gray-300 cursor-pointer hover:bg-gray-200">
+                      <button
+                        onClick={() =>
+                          updateCartQuantity(
+                            item._id,
+                            item.size,
+                            item.quantity - 1,
+                          )
+                        }
+                        className="border px-2 py-1 rounded border-gray-300 cursor-pointer hover:bg-gray-200"
+                      >
                         -
                       </button>
 
                       <span>{item.quantity}</span>
 
-                      <button className="border px-2 py-1 rounded border-gray-300 cursor-pointer hover:bg-gray-200">
+                      <button
+                        onClick={() =>
+                          updateCartQuantity(
+                            item._id,
+                            item.size,
+                            item.quantity + 1,
+                          )
+                        }
+                        className="border px-2 py-1 rounded border-gray-300 cursor-pointer hover:bg-gray-200"
+                      >
                         +
                       </button>
                     </div>

@@ -51,7 +51,19 @@ export const ContextProvider = ({ children }) => {
 
   // function to update quanity of the cart on --cart page--
 
-  function updateCartQuantity(size, item) {}
+  const updateCartQuantity = (productId, size, newQuantity) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((item) => {
+        if (item._id === productId && item.size === size) {
+          return {
+            ...item,
+            quantity: newQuantity < 1 ? 1 : newQuantity,
+          };
+        }
+        return item;
+      }),
+    );
+  };
 
   // page refresh but items in the cart dont get removed
   useEffect(() => {
@@ -78,6 +90,7 @@ export const ContextProvider = ({ children }) => {
         addToCart,
         tax,
         deleteFromCart,
+        updateCartQuantity,
       }}
     >
       {children}
