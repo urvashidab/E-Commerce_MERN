@@ -4,18 +4,28 @@ import { ProductContext } from "../context/ProductContext";
 
 export default function PlaceOrder() {
   const { currency, deliveryFees, cartItems, tax } = useContext(ProductContext);
+  const [paymentMethod, setPaymentMethod] = useState("");
+
+  // error if payment method is not selected.
+  const [paymentError, setPaymentError] = useState(false);
+
+  // handle paymentchange for radio buttons
+  function handlePaymentMethod(e) {
+    setPaymentMethod(e.target.value);
+    setPaymentError(false);
+  }
 
   // handle form button
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert("Submitted");
+    if (!paymentMethod) {
+      setPaymentError(true);
+      return;
+    }
+    setPaymentError(false);
+    alert("Submitted.");
   }
-
-  const totalItems = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0,
-  );
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -32,7 +42,6 @@ export default function PlaceOrder() {
 
   const grandTotal = totalPrice + taxFees + finalDeliveryFees;
 
-  console.log(totalItems);
   console.log(totalPrice);
 
   return (
@@ -174,8 +183,10 @@ export default function PlaceOrder() {
 
             <label className="flex items-center gap-2 cursor-pointer">
               <input
+                onChange={handlePaymentMethod}
                 type="radio"
                 name="payment"
+                value="upi"
                 className="accent-black cursor-pointer"
               />
               <span>UPI</span>
@@ -183,8 +194,10 @@ export default function PlaceOrder() {
 
             <label className="flex items-center gap-2 cursor-pointer">
               <input
+                onChange={handlePaymentMethod}
                 type="radio"
                 name="payment"
+                value="debit"
                 className="accent-black cursor-pointer"
               />
               <span>Debit Card</span>
@@ -192,8 +205,10 @@ export default function PlaceOrder() {
 
             <label className="flex items-center gap-2 cursor-pointer">
               <input
+                onChange={handlePaymentMethod}
                 type="radio"
                 name="payment"
+                value="credit"
                 className="accent-black cursor-pointer"
               />
               <span>Credit Card</span>
@@ -201,13 +216,21 @@ export default function PlaceOrder() {
 
             <label className="flex items-center gap-2 cursor-pointer">
               <input
+                onChange={handlePaymentMethod}
                 type="radio"
                 name="payment"
+                value="cod"
                 className="accent-black cursor-pointer"
               />
               <span>Cash on Delivery</span>
             </label>
           </div>
+
+          {paymentError && (
+            <p className="text-lg text-red-500">
+              Please select a payment method.
+            </p>
+          )}
 
           {/* place order button */}
           <button
