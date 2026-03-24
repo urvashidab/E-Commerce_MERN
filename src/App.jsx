@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
-import Orders from "./pages/Orders";
+import OrderConfirmation from "./pages/OrderConfirmation";
 import PlaceOrder from "./pages/PlaceOrder";
 import Collection from "./pages/Collection";
 import Product from "./pages/Product";
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/collection" element={<Collection />} />
         <Route path="/product/:productID" element={<Product />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
-        <Route path="/order" element={<Orders />} />
+        <Route path="/orderconfirmation" element={<OrderConfirmation />} />
       </Routes>
       <Footer />
     </div>

@@ -1,10 +1,13 @@
 import { useContext, useState } from "react";
 import Line from "../components/Line";
 import { ProductContext } from "../context/ProductContext";
+import { useNavigate } from "react-router-dom";
 
 export default function PlaceOrder() {
   const { currency, deliveryFees, cartItems, tax } = useContext(ProductContext);
   const [paymentMethod, setPaymentMethod] = useState("");
+
+  const navigate = useNavigate();
 
   // error if payment method is not selected.
   const [paymentError, setPaymentError] = useState(false);
@@ -24,7 +27,7 @@ export default function PlaceOrder() {
       return;
     }
     setPaymentError(false);
-    alert("Submitted.");
+    navigate("/orderconfirmation");
   }
 
   const totalPrice = cartItems.reduce(
@@ -233,6 +236,7 @@ export default function PlaceOrder() {
           )}
 
           {/* place order button */}
+
           <button
             form="myForm"
             type="submit"
