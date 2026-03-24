@@ -1,13 +1,20 @@
-import React from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Line from "../components/Line";
 import { NavLink } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 
 const OrderConfirmation = () => {
-  const { currency, deliveryFees, cartItems, tax } = useContext(ProductContext);
+  const { currency, deliveryFees, orderItems, tax, orderID } =
+    useContext(ProductContext);
 
-  const totalPrice = cartItems.reduce(
+  // date
+  const orderDate = new Date().toLocaleDateString("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  });
+
+  const totalPrice = orderItems.reduce(
     (total, item) => total + item.quantity * item.price,
     0,
   );
@@ -21,7 +28,7 @@ const OrderConfirmation = () => {
   const taxFees = (totalPrice * tax) / 100;
 
   const grandTotal = taxFees + totalPrice + finalDeliveryFees;
-  const totalItems = cartItems.reduce(
+  const totalItems = orderItems.reduce(
     (total, item) => total + item.quantity,
     0,
   );
@@ -36,7 +43,7 @@ const OrderConfirmation = () => {
 
         <div className="col-span-2 flex flex-col  justify-start gap-6 ">
           {/* thank you */}
-          <h1 className="font-bold text-center text-lg md:text-2xl lg:text-3xl  tracking-wider">
+          <h1 className="font-bold text-center text-xl md:text-3xl lg:text-4xl tracking-wider">
             Thank you for your order
           </h1>
 
@@ -44,23 +51,27 @@ const OrderConfirmation = () => {
             Your order has been confirmed and you will receive an order
             confirmation email shortly.
           </p>
+          <p className=" text-sm">Estimated delivery: 3–5 business days</p>
 
           {/* details */}
-          <div className="flex flex-col gap-2 w-full lg:w-1/3  ">
-            <div className="flex justify-between font-bold ">
+          <div className="flex flex-col gap-2 w-full lg:w-1/3 text-sm ">
+            <div className="flex justify-between font-bold text-red-500 ">
               <p>Order Number</p>
-              <p>#1234</p>
+              <p>{orderID}</p>
             </div>
             {/* date */}
-            <div className="flex justify-between">
+            <div className="flex justify-between ">
               <p>Order Date</p>
-              <p>#1234</p>
+              <p>{orderDate}</p>
             </div>
           </div>
 
           {/* address */}
-          <div className="flex flex-col gap-4 ">
-            <p>Shipping Address:</p>
+          <div className="flex flex-col gap-1 text-sm">
+            <p className="font-bold">Shipping Address:</p>
+            <p>John Doe</p>
+            <p>Patiala, Punjab</p>
+            <p>India</p>
           </div>
 
           {/* payment selected */}
@@ -79,10 +90,10 @@ const OrderConfirmation = () => {
               </p>
             </div>
             {/* items-photo */}
-            {cartItems.map((item) => (
+            {orderItems.map((item) => (
               <div
                 key={item._id + item.size}
-                className="flex  gap-4 text-gray-500 text-sm "
+                className="flex gap-4 text-gray-500 text-sm "
               >
                 <img className="w-20 h-20" src={item.image[0]}></img>
                 <div className="flex flex-col">

@@ -4,9 +4,16 @@ import { ProductContext } from "../context/ProductContext";
 import { useNavigate } from "react-router-dom";
 
 export default function PlaceOrder() {
-  const { currency, deliveryFees, cartItems, tax } = useContext(ProductContext);
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const {
+    currency,
+    deliveryFees,
+    cartItems,
+    tax,
+    setOrderItems,
+    setCartItems,
+  } = useContext(ProductContext);
 
+  const [paymentMethod, setPaymentMethod] = useState("");
   const navigate = useNavigate();
 
   // error if payment method is not selected.
@@ -27,6 +34,9 @@ export default function PlaceOrder() {
       return;
     }
     setPaymentError(false);
+    setOrderItems(cartItems); // snapshot first
+    setCartItems([]); // clear cart second
+
     navigate("/orderconfirmation");
   }
 
@@ -189,7 +199,7 @@ export default function PlaceOrder() {
                 onChange={handlePaymentMethod}
                 type="radio"
                 name="payment"
-                value="upi"
+                value="UPI"
                 className="accent-black cursor-pointer"
               />
               <span>UPI</span>
@@ -200,7 +210,7 @@ export default function PlaceOrder() {
                 onChange={handlePaymentMethod}
                 type="radio"
                 name="payment"
-                value="debit"
+                value="Debit"
                 className="accent-black cursor-pointer"
               />
               <span>Debit Card</span>
@@ -211,7 +221,7 @@ export default function PlaceOrder() {
                 onChange={handlePaymentMethod}
                 type="radio"
                 name="payment"
-                value="credit"
+                value="Credit"
                 className="accent-black cursor-pointer"
               />
               <span>Credit Card</span>

@@ -13,7 +13,19 @@ export const ContextProvider = ({ children }) => {
     const savedCart = localStorage.getItem("cartItems");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+  const [orderItems, setOrderItems] = useState(() => {
+    const savedOrder = localStorage.getItem("orderItems");
+    return savedOrder ? JSON.parse(savedOrder) : [];
+  });
 
+  // to generate orderID
+  const [orderID, setOrderID] = useState(() => {
+    const savedOrderID = localStorage.getItem("orderID");
+
+    return savedOrderID
+      ? savedOrderID
+      : "#ORD" + Math.floor(100000 + Math.random() * 900000);
+  });
   // function to add items to cart
 
   function addToCart(product, size, quantity) {
@@ -70,6 +82,15 @@ export const ContextProvider = ({ children }) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  // page refresh but items in the cart dont get removed-- for snapshot of cartItem
+  useEffect(() => {
+    localStorage.setItem("orderItems", JSON.stringify(orderItems));
+  });
+
+  useEffect(() => {
+    localStorage.setItem("orderID", orderID);
+  }, [orderID]);
+
   // function to delete items in cart -- cart page
   function deleteFromCart(id, size) {
     setCartItems((prev) =>
@@ -87,10 +108,14 @@ export const ContextProvider = ({ children }) => {
         setShowSearch,
         showSearch,
         cartItems,
+        setCartItems,
         addToCart,
         tax,
         deleteFromCart,
         updateCartQuantity,
+        setOrderItems,
+        orderItems,
+        orderID,
       }}
     >
       {children}
