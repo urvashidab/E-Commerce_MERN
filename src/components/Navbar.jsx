@@ -68,12 +68,14 @@ const Navbar = () => {
 
         {/* profile image */}
         <div className="relative group">
-          <img
-            src={assets.profile_icon}
-            alt="profile icon"
-            className="w-5 cursor-pointer"
-          ></img>
-          <div className="absolute hidden group-hover:block  right-0 pt-2 border rounded  bg-gray-50 dropdown-menu">
+          <Link to="/login">
+            <img
+              src={assets.profile_icon}
+              alt="profile icon"
+              className="w-5 cursor-pointer"
+            ></img>
+          </Link>
+          {/* <div className="absolute hidden group-hover:block  right-0 pt-2 border rounded  bg-gray-50 dropdown-menu">
             <div className="flex flex-col gap-2 w-36 py-3 px-5  ">
               <Link
                 to="/profile"
@@ -97,7 +99,7 @@ const Navbar = () => {
                 <p>Logout</p>
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* cart image */}

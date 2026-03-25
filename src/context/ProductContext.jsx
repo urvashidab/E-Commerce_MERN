@@ -116,6 +116,7 @@ export const ContextProvider = ({ children }) => {
         setOrderItems,
         orderItems,
         orderID,
+        setOrderID,
       }}
     >
       {children}
