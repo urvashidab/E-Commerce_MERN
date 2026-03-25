@@ -196,9 +196,7 @@ export default function Cart() {
           </div>
           {/* button */}
           <Link to="/placeorder">
-            <button className="w-full border bg-black text-white cursor-pointer hover:bg-gray-700 py-2 px-3 mt-4">
-              CHECKOUT
-            </button>
+            <button className="w-full primaryBtn mt-4">CHECKOUT</button>
           </Link>
 
           {/* right side end */}

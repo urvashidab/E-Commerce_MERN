@@ -14,6 +14,12 @@ a.active hr {
     @apply w-10 h-0.5 bg-gray-600;
   }
 
+  .primaryBtn {
+    @apply border border-black bg-black text-white
+  hover:bg-white hover:text-black
+  transition py-2.5 px-10 tracking-wide cursor-pointer;
+  }
+
   .btnDesign {
     @apply cursor-pointer bg-black py-3 px-5 rounded text-white hover:bg-gray-600;
   }

@@ -26,9 +26,8 @@ const ResetPassword = () => {
 
           <button
             type="submit"
-            className="border border-black bg-black text-white
-            hover:bg-white hover:text-black transition
-            py-2.5 px-10 tracking-wide mt-4"
+            className=" primaryBtn
+            mt-4"
           >
             SEND RESET LINK
           </button>

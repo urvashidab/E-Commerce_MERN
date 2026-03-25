@@ -108,17 +108,14 @@ const Login = () => {
             {/* login button */}
 
             <div className="flex gap-6 mt-10 flex-col lg:flex-row ">
-              <button
-                type="submit"
-                className="flex-1 border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-2.5 px-10 tracking-wide"
-              >
+              <button type="submit" className="flex-1 primaryBtn">
                 {isLoginMode ? "LOG IN" : "REGISTER"}
               </button>
               {/* register */}
               <button
                 onClick={toggleLoginMode}
                 type="button"
-                className="flex-1 border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-2.5 px-10 tracking-wide"
+                className="flex-1 primaryBtn"
               >
                 {isLoginMode ? "REGISTER" : "BACK TO LOG IN"}
               </button>

@@ -20,7 +20,7 @@ const Subscribe = () => {
         />
         <button
           type="submit"
-          className="uppercase cursor-pointer bg-black text-white px-5 py-3 text-sm"
+          className="uppercase border border-black bg-black text-white py-2.5 px-10 tracking-wide cursor-pointer"
         >
           subscribe
         </button>

@@ -250,7 +250,8 @@ export default function PlaceOrder() {
           <button
             form="myForm"
             type="submit"
-            className="w-fit self-start border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-2.5 px-10 mt-6 tracking-wide"
+            className="w-fit self-start primaryBtn
+             mt-6 tracking-wide"
           >
             PLACE ORDER
           </button>
