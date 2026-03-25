@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../components/Footer";
+
 import Line from "../components/Line";
 import Subscribe from "../components/Subscribe";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -16,63 +16,97 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* left side */}
 
-          <div className="flex flex-col gap-5">
-            <h2 className=" text-2xl font-bold">Our Store</h2>
-            <p className="text-gray-500">
-              9876 Gerard Station Suite ABC, Vancouver, Canada
-            </p>
+          <div className="flex flex-col gap-8">
+            {/* store */}
+            <div>
+              <h2 className="text-xl tracking-widest font-light mb-2">
+                OUR STORE
+              </h2>
 
-            <div className="flex gap-2 items-center text-lg">
-              <span>
-                <FaPhoneAlt />
-              </span>{" "}
-              <p>(123) 456-7890</p>
+              <p className="text-gray-500 leading-relaxed">
+                9876 Gerard Station Suite ABC
+                <br />
+                Vancouver, Canada
+              </p>
             </div>
 
-            <div className="flex gap-2 items-center text-lg">
-              <span>
-                <MdEmail />
-              </span>
-              <a
-                href="mailto:urvashi.dabgotra@gmail.com"
-                className="underline text-blue-600 hover:text-blue-700"
-              >
-                urvashi.dabgotra11@gmail.com
-              </a>
-            </div>
-            <h2 className="text-2xl font-bold">Careers at Forever</h2>
-            <p className="text-gray-500">
-              Learn more about our teams and job openings.
-            </p>
+            {/* customer care */}
+            <div>
+              <h2 className="text-xl tracking-widest font-light mb-3">
+                CUSTOMER CARE
+              </h2>
 
-            <button className="btnDesign w-fit">Explore Jobs</button>
+              <div className="flex items-center gap-2 text-gray-700">
+                <FaPhoneAlt className="text-sm" />
+                <span>(123) 456-7890</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-gray-700 mt-2">
+                <MdEmail className="text-base" />
+                <a
+                  href="mailto:urvashi.dabgotra11@gmail.com"
+                  className="underline hover:text-gray-500 transition"
+                >
+                  urvashi.dabgotra11@gmail.com
+                </a>
+              </div>
+
+              <p className="text-gray-400 text-sm mt-3">
+                Monday – Friday | 9 AM – 6 PM PST
+              </p>
+
+              <p className="text-gray-400 text-sm mt-1">
+                We usually respond within 24 hours
+              </p>
+            </div>
+
+            {/* support */}
+            <div>
+              <h2 className="text-xl tracking-widest font-light mb-2">
+                SUPPORT
+              </h2>
+
+              <ul className="text-gray-500 text-sm space-y-1">
+                <li>Shipping & Delivery</li>
+                <li>Returns & Exchanges</li>
+                <li>Order Tracking</li>
+              </ul>
+            </div>
           </div>
 
           {/* right side */}
 
-          <form className="flex flex-col gap-1 ">
-            <label>Name</label>
+          <form className="flex flex-col gap-4 ">
+            {/* name */}
             <input
               type="text"
               required
-              className="border  mb-2 border-gray-400 rounded py-2 px-4 outline-none focus:ring-1 focus:ring-[#E2B59A] "
+              placeholder="NAME"
+              className="border-b  mb-2 border-gray-400  py-2 px-2 outline-none placeholder:text-gray-300"
             ></input>
 
-            <label>Email</label>
+            {/* email */}
             <input
               type="email"
               required
-              className="border mb-2 border-gray-400 rounded py-2 px-4 outline-none focus:ring-1 focus:ring-amber-600 "
+              placeholder="E-MAIL"
+              className="border-b  mb-2 border-gray-400  py-2 px-2 outline-none placeholder:text-gray-300 "
             ></input>
-            <label>Message</label>
+
+            {/* message */}
             <textarea
               required
-              rows={5}
-              placeholder="How can we help?"
-              className="border mb-2 border-gray-400 rounded py-2 px-4 outline-none focus:ring-1 focus:ring-amber-600 "
+              rows="5"
+              placeholder="HOW CAN WE HELP?"
+              className="border-b  mb-2 border-gray-400  py-2 px-2 outline-none placeholder:text-gray-300 "
             ></textarea>
-            <button type="submit" className=" btnDesign w-fit ">
-              Submit
+
+            {/* button */}
+            <button
+              type="submit"
+              className="w-fit self-start border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-2.5 px-10 mt-6 tracking-wide"
+            >
+              SUBMIT
             </button>
           </form>
         </div>
