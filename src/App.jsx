@@ -11,6 +11,7 @@ import Product from "./pages/Product";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/product/:productID" element={<Product />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/orderconfirmation" element={<OrderConfirmation />} />
+        <Route path="/resetpassword" element={<ResetPassword />} />
       </Routes>
       <Footer />
     </div>
