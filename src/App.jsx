@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ResetPassword from "./pages/ResetPassword";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/orderconfirmation" element={<OrderConfirmation />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
