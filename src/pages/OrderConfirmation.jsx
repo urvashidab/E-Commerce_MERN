@@ -115,7 +115,7 @@ const OrderConfirmation = () => {
             </div>
             {/* button for continue shopping */}
             <NavLink to="/collection">
-              <button className=" border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-3 px-12  tracking-wide">
+              <button className=" border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-2.5 px-10  tracking-wide">
                 Continue Shopping
               </button>
             </NavLink>

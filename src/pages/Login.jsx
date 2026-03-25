@@ -7,6 +7,13 @@ import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 const Login = () => {
   const [hidePassword, setHidePassword] = useState(false);
 
+  // for login/register mode toggle
+  const [isLoginMode, setIsLoginMode] = useState(true);
+
+  function toggleLoginMode() {
+    setIsLoginMode((prev) => !prev);
+  }
+
   function handleHidePassword() {
     setHidePassword((prev) => !prev);
   }
@@ -31,11 +38,20 @@ const Login = () => {
 
         <div className="flex flex-col gap-6 justify-start ">
           <h1 className="text-center text-2xl tracking-widest font-light">
-            LOG IN
+            {isLoginMode ? "LOG IN" : "REGISTER"}
           </h1>
 
           {/* form */}
           <form id="loginForm" className="flex flex-col gap-4  mt-6">
+            {/* name */}
+            {!isLoginMode && (
+              <input
+                type="text"
+                required
+                placeholder="NAME"
+                className="border-b  mb-2 border-gray-400  py-2 px-2 outline-none placeholder:text-gray-400 "
+              ></input>
+            )}
             {/* email */}
             <input
               type="email"
@@ -60,29 +76,56 @@ const Login = () => {
                 {hidePassword ? <IoEyeOutline /> : <IoEyeOffOutline />}
               </button>
             </div>
+            {/* {!isLoginMode && (
+              <input
+                type="password"
+                required
+                placeholder="CONFIRM PASSWORD"
+                className="border-b border-gray-400 py-2 px-2 outline-none placeholder:text-gray-400"
+              />
+            )} */}
 
-            <NavLink to="/resetpassword">
-              <span className="text-sm text-black text-underline font-extralight underline">
-                Have you forgotten your password?
-              </span>
-            </NavLink>
+            {isLoginMode ? (
+              <NavLink to="/resetpassword">
+                <span className="text-sm text-black  font-extralight underline">
+                  Have you forgotten your password?
+                </span>
+              </NavLink>
+            ) : (
+              <div className="flex gap-1 text-sm">
+                <p className="text-gray-400">Already have an account?</p>
+
+                <button
+                  type="button"
+                  onClick={toggleLoginMode}
+                  className="underline cursor-pointer"
+                >
+                  LOG IN
+                </button>
+              </div>
+            )}
+
             {/* login button */}
 
             <div className="flex gap-6 mt-10 flex-col lg:flex-row ">
               <button
                 type="submit"
-                className="flex-1 border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-3 px-12 tracking-wide"
+                className="flex-1 border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-2.5 px-10 tracking-wide"
               >
-                LOG IN
+                {isLoginMode ? "LOG IN" : "REGISTER"}
               </button>
               {/* register */}
-              <button className="flex-1 border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-3 px-12 tracking-wide">
-                REGISTER
+              <button
+                onClick={toggleLoginMode}
+                type="button"
+                className="flex-1 border border-black bg-black text-white cursor-pointer hover:bg-white hover:text-black transition py-2.5 px-10 tracking-wide"
+              >
+                {isLoginMode ? "REGISTER" : "BACK TO LOG IN"}
               </button>
             </div>
           </form>
 
-          <div className="flex justify-between text-sm mt-10 ">
+          <div className="flex text-sm mt-10 ">
             <div className="flex gap-1">
               <p className="text-gray-400 ">Need Help?</p>
               <NavLink to="/contact">
